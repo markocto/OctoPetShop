@@ -1,4 +1,4 @@
-name: OctoPetShop .NET 6 build
+name: OctoPetShop .NET 6 build and Deploy
 
 on:
   push:
