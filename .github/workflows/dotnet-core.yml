@@ -17,6 +17,11 @@ jobs:
     outputs:
       version: ${{ steps.version-generator.outputs.version }}
 
+    env:
+      OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
+      OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
+      OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
+
     steps:
     - name: Login to Octopus Deploy 
       uses: OctopusDeploy/login@v1
@@ -117,6 +122,11 @@ jobs:
       runs-on: ubuntu-latest
       permissions:
         id-token: write # This is required to obtain the ID token from GitHub Actions
+
+      env:
+        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
+        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
+        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
         
       steps:
       - name: Login to Octopus Deploy 
@@ -143,6 +153,11 @@ jobs:
       runs-on: ubuntu-latest
       permissions:
         id-token: write # This is required to obtain the ID token from GitHub Actions
+      
+      env:
+        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
+        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
+        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
         
       steps:
       - name: Login to Octopus Deploy 
