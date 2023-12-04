@@ -15,7 +15,7 @@ jobs:
       id-token: write # This is required to obtain the ID token from GitHub Actions
     
     outputs:
-      version: ${{ steps.version-generator.outputs.version }}
+      version: ${{ steps.version-generator.outputs.version }} 
 
     steps:
     - name: Login to Octopus Deploy 
