@@ -11,18 +11,19 @@ jobs:
 
     name: Build & Push OPS packages to Octopus 🐙
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required to obtain the ID token from GitHub Actions
     
     outputs:
       version: ${{ steps.version-generator.outputs.version }}
 
-    env:
-      OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-      OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-      OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
-
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Login to Octopus Deploy 
+      uses: OctopusDeploy/login@v1
+      with: 
+        server: https://stormer.octopus.app
+        service_account_id: 006dd341-a534-4242-b4fb-f4eb7e989e48
+
     - name: Set Version Number
       id: version-generator
       run: echo "version=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER" >> $GITHUB_OUTPUT
@@ -114,13 +115,16 @@ jobs:
       name: Push OPS Build Information to Octopus 🐙
       needs: build 
       runs-on: ubuntu-latest
-
-      env:
-        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
+      permissions:
+        id-token: write # This is required to obtain the ID token from GitHub Actions
         
       steps:
+      - name: Login to Octopus Deploy 
+        uses: OctopusDeploy/login@v1
+        with: 
+          server: https://stormer.octopus.app
+          service_account_id: 006dd341-a534-4242-b4fb-f4eb7e989e48
+
       - name: Push Build Information
         uses: OctopusDeploy/push-build-information-action@v3
        
@@ -137,13 +141,16 @@ jobs:
       name: Create Octopus Release 🐙
       needs: [build, Push-build-information]
       runs-on: ubuntu-latest
-      
-      env:
-        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
+      permissions:
+        id-token: write # This is required to obtain the ID token from GitHub Actions
         
       steps:
+      - name: Login to Octopus Deploy 
+        uses: OctopusDeploy/login@v1
+        with: 
+          server: https://stormer.octopus.app
+          service_account_id: 006dd341-a534-4242-b4fb-f4eb7e989e48
+
       - uses: OctopusDeploy/create-release-action@v3
         id: "create-release"
         with:
