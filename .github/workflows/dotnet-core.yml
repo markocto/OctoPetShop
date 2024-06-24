@@ -5,6 +5,10 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
 
+env:
+      OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
+      OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
+      OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
 
 jobs:
 
@@ -13,22 +17,13 @@ jobs:
     name: Build & Push OPS packages to Octopus 🐙
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # This is required to obtain the ID token from GitHub Actions
+      id-token: write
     
     outputs:
       version: ${{ steps.version-generator.outputs.version }}
 
-    env:
-      OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-      OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-      OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
-
     steps:
-    - name: Login to Octopus Deploy 
-      uses: OctopusDeploy/login@v1
-      with: 
-        server: https://stormer.octopus.app
-        service_account_id: 006dd341-a534-4242-b4fb-f4eb7e989e48
+    - uses: actions/checkout@v4
 
     - name: Set Version Number
       id: version-generator
@@ -122,12 +117,7 @@ jobs:
       needs: build 
       runs-on: ubuntu-latest
       permissions:
-        id-token: write # This is required to obtain the ID token from GitHub Actions
-
-      env:
-        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
+        id-token: write 
         
       steps:
       - name: Login to Octopus Deploy 
@@ -153,12 +143,7 @@ jobs:
       needs: [build, Push-build-information]
       runs-on: ubuntu-latest
       permissions:
-        id-token: write # This is required to obtain the ID token from GitHub Actions
-      
-      env:
-        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}
-        OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE_NAME }}
+        id-token: write 
         
       steps:
       - name: Login to Octopus Deploy 
