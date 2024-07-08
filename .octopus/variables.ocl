@@ -1,7 +1,7 @@
-variable "Project.Web.App.Resource.Group.Name" {
-    value "markl-octopetshop-demo" {}
+variable "Project.App.Service.Name" {
+    value "${Project.Web.App.Resource.Group}" {}
 }
 
-variable "Project.App.Service.Name" {
+variable "Project.Web.App.Resource.Group.Name" {
     value "${Octopus.Project.Name | ToLower | Replace \" \"}-${Octopus.Environment.Name | ToLower}" {}
 }
