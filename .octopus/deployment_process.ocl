@@ -1,4 +1,5 @@
-step "Deploy Azure OctoPetShop Web Web App" {
+step "deploy-azure-octopetshop-web-web-app" {
+    name = "Deploy Azure OctoPetShop Web Web App"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Web"
     }
@@ -13,18 +14,17 @@ step "Deploy Azure OctoPetShop Web Web App" {
             Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
             Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
             Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.Web"
             Octopus.Action.PowerShell.Edition = "Desktop"
-            Octopus.Action.RunOnServer = "true"
             OctopusUseBundledTooling = "True"
         }
-        worker_pool = "Windows"
+        worker_pool = "windows"
 
         packages {
             acquisition_location = "Server"
-            feed = "Octopus Server (built-in)"
+            feed = "octopus-server-built-in"
             package_id = "OctopusSamples.OctoPetShop.Web"
             properties = {
                 SelectionMode = "immediate"
@@ -33,7 +33,8 @@ step "Deploy Azure OctoPetShop Web Web App" {
     }
 }
 
-step "Deploy OctoPetShop Product Service Web App" {
+step "deploy-octopetshop-product-service-web-app" {
+    name = "Deploy OctoPetShop Product Service Web App"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Product-Service"
     }
@@ -48,18 +49,17 @@ step "Deploy OctoPetShop Product Service Web App" {
             Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
             Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
             Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.ProductService"
             Octopus.Action.PowerShell.Edition = "Desktop"
-            Octopus.Action.RunOnServer = "true"
             OctopusUseBundledTooling = "True"
         }
-        worker_pool = "Windows"
+        worker_pool = "windows"
 
         packages {
             acquisition_location = "Server"
-            feed = "Octopus Server (built-in)"
+            feed = "octopus-server-built-in"
             package_id = "OctopusSamples.OctoPetShop.ProductService"
             properties = {
                 SelectionMode = "immediate"
@@ -68,7 +68,8 @@ step "Deploy OctoPetShop Product Service Web App" {
     }
 }
 
-step "Deploy OctoPetShop Shopping Cart Service Web App" {
+step "deploy-octopetshop-shopping-cart-service-web-app" {
+    name = "Deploy OctoPetShop Shopping Cart Service Web App"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-ShoppingCart-Service"
     }
@@ -83,18 +84,17 @@ step "Deploy OctoPetShop Shopping Cart Service Web App" {
             Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
             Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
             Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.ShoppingCartService"
             Octopus.Action.PowerShell.Edition = "Desktop"
-            Octopus.Action.RunOnServer = "true"
             OctopusUseBundledTooling = "True"
         }
-        worker_pool = "Windows"
+        worker_pool = "windows"
 
         packages {
             acquisition_location = "Server"
-            feed = "Octopus Server (built-in)"
+            feed = "octopus-server-built-in"
             package_id = "OctopusSamples.OctoPetShop.ShoppingCartService"
             properties = {
                 SelectionMode = "immediate"
@@ -103,7 +103,8 @@ step "Deploy OctoPetShop Shopping Cart Service Web App" {
     }
 }
 
-step "Deploy OctoPetShop Database" {
+step "deploy-octopetshop-database" {
+    name = "Deploy OctoPetShop Database"
     properties = {
         Octopus.Action.TargetRoles = "Bastion"
     }
@@ -115,14 +116,15 @@ step "Deploy OctoPetShop Database" {
             Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
             Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.Database"
+            Octopus.Action.RunOnServer = "false"
         }
         worker_pool_variable = ""
 
         packages {
             acquisition_location = "Server"
-            feed = "Octopus Server (built-in)"
+            feed = "octopus-server-built-in"
             package_id = "OctopusSamples.OctoPetShop.Database"
             properties = {
                 SelectionMode = "immediate"
@@ -131,7 +133,8 @@ step "Deploy OctoPetShop Database" {
     }
 }
 
-step "Run a Script" {
+step "run-a-script" {
+    name = "Run a Script"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Web"
     }
@@ -139,16 +142,15 @@ step "Run a Script" {
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptBody = <<-EOT
                 $URL = $OctopusParameters["Project.Web.URL"]
                 Write-Highlight "OctoPetShop has been deployed to [$url]($url)"
                 Write-Highlight "Please verify the deployment has completed successfully"
                 Write-Highlight "Hello Derek"
-            EOT
+                EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
-        worker_pool = "Windows"
+        worker_pool = "windows"
     }
 }
