@@ -47,7 +47,7 @@ step "deploy-octopetshop-database" {
             Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
-            Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.Database"
+            Octopus.Action.Package.PackageId = "OctoPetShop.Database"
             Octopus.Action.RunOnServer = "false"
         }
         worker_pool_variable = ""
@@ -55,7 +55,7 @@ step "deploy-octopetshop-database" {
         packages {
             acquisition_location = "Server"
             feed = "octopus-server-built-in"
-            package_id = "OctopusSamples.OctoPetShop.Database"
+            package_id = "OctoPetShop.Database"
             properties = {
                 SelectionMode = "immediate"
             }
