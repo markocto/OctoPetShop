@@ -1,4 +1,4 @@
-name: OctoPetShop .NET 6 build and Deploy
+name: OctoPetShop .NET 6 Build and Deploy
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
 
   build:
 
-    name: Build & Push OPS packages to Octopus 🐙
+    name: Build & Push OctoPetShop packages to Octopus 🐙
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -48,20 +48,20 @@ jobs:
         mkdir ${{ github.workspace }}/artifacts/OctoPetShop.ProductService
         mkdir ${{ github.workspace }}/artifacts/OctoPetShop.ShoppingCartService
     
-    - name: Publish OPS-Database
+    - name: Publish OctoPetShop-Database
       run: dotnet publish OctopusSamples.OctoPetShop.Database/OctopusSamples.OctoPetShop.Database.csproj --configuration Release --no-restore --output "artifacts/OctoPetShop.Database"
 
-    - name: Publish OPS-Web
+    - name: Publish OctoPetShop-Web
       run: dotnet publish OctopusSamples.OctoPetShop.Web/OctopusSamples.OctoPetShop.Web.csproj --configuration Release --no-restore --output "artifacts/OctoPetShop.Web"
     
-    - name: Publish OPS-ProductService
+    - name: Publish OctoPetShop-ProductService
       run: dotnet publish OctopusSamples.OctoPetShop.ProductService/OctopusSamples.OctoPetShop.ProductService.csproj --configuration Release --no-restore --output "artifacts/OctoPetShop.ProductService"
     
-    - name: Publish OPS-ShoppingCartService
+    - name: Publish OctoPetShop-ShoppingCartService
       run: |
         dotnet publish OctopusSamples.OctoPetShop.ShoppingCartService/OctopusSamples.OctoPetShop.ShoppingCartService.csproj --configuration Release --no-restore --output "artifacts/OctoPetShop.ShoppingCartService"
 
-    - name: Package OPS-Database
+    - name: Package OctoPetShop-Database
       uses: OctopusDeploy/create-zip-package-action@v3
       with:
         package_id: 'OctoPetShop.Database'
@@ -71,7 +71,7 @@ jobs:
         files: |
           **/*.*
 
-    - name: Package OPS Web
+    - name: Package OctoPetShop Web
       uses: OctopusDeploy/create-zip-package-action@v3
       with:
         package_id: 'OctoPetShop.Web'
@@ -81,7 +81,7 @@ jobs:
         files: |
           **/*.*
 
-    - name: Package OPS-ProductService
+    - name: Package OctoPetShop-ProductService
       uses: OctopusDeploy/create-zip-package-action@v3
       with:
         package_id: 'OctoPetShop.ProductService'
@@ -91,7 +91,7 @@ jobs:
         files: |
           **/*.*
 
-    - name: Package OPS-ShoppingCartService
+    - name: Package OctoPetShop-ShoppingCartService
       uses: OctopusDeploy/create-zip-package-action@v3
       with:
         package_id: 'OctoPetShop.ShoppingCartService'
@@ -101,7 +101,7 @@ jobs:
         files: |
           **/*.*
     
-    - name: Push OPS packages to Octopus 🐙
+    - name: Push OctoPetShop packages to Octopus 🐙
       uses: OctopusDeploy/push-package-action@v3
       
       with:  
@@ -113,7 +113,7 @@ jobs:
 
   Push-build-information:
        
-      name: Push OPS Build Information to Octopus 🐙
+      name: Push OctoPetShop Build Information to Octopus 🐙
       needs: build 
       runs-on: ubuntu-latest
       permissions:
