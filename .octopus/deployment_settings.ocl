@@ -21,14 +21,14 @@ release_notes_template = <<-EOT
         
         Full build info:
         #{each build in Octopus.Release.Builds}
-        * Packages:                    #{build.Packages}
-        * Build URL:                     [#{build.BuildUrl}](#{build.BuildUrl})
-        * Branch:                         #{build.Branch}
-        * Build Server:                #{build.BuildEnvironment}
-        * Build Number:             #{build.BuildNumber}
-        * Github repo:                 [#{build.VcsRoot}](#{build.VcsRoot})
+        * Packages: #{build.Packages}
+        * Build URL: [#{build.BuildUrl}](#{build.BuildUrl})
+        * Branch: #{build.Branch}
+        * Build Server: #{build.BuildEnvironment}
+        * Build Number: #{build.BuildNumber}
+        * Github repo: [#{build.VcsRoot}](#{build.VcsRoot})
         * Version Control Type: #{build.VcsType}
-        * Commit Number:        [#{build.VcsCommitNumber}](#{build.VcsCommitUrl})
+        * Commit Number: [#{build.VcsCommitNumber}](#{build.VcsCommitUrl})
         #{/each}
         
         EOT
