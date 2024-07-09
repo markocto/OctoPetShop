@@ -68,7 +68,5 @@ jobs:
         server: ${{ secrets.OCTOPUSSERVERURL }}
         space: ${{ secrets.OCTOPUSSERVER_SPACE }}
         project: "Demo OctoPetShop"
-        deploy_to: "Dev"
         git_ref: ${{ (github.ref_type == 'tag' && github.event.repository.default_branch ) || (github.head_ref || github.ref) }}
         git_commit: ${{ github.event.after || github.event.pull_request.head.sha }}
-        progress: true
