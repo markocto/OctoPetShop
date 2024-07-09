@@ -1,7 +1,3 @@
 variable "Project.App.Service.Name" {
-    value "${Project.Web.App.Resource.Group}" {}
-}
-
-variable "Project.Web.App.Resource.Group.Name" {
-    value "${Octopus.Project.Name | ToLower | Replace \" \"}-${Octopus.Environment.Name | ToLower}" {}
+    value "octopetshop-asp" {}
 }
