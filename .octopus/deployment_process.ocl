@@ -1,10 +1,10 @@
 step "deploy-azure-octopetshop-web-web-app" {
-    name = "Deploy Azure OctoPetShop Web Web App"
+    name = "Deploy Azure OctoPetShop Web App"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Web"
     }
 
-    action {
+    action "deploy-azure-octopetshop-web-app" {
         action_type = "Octopus.AzureWebApp"
         properties = {
             Octopus.Action.Azure.AppOffline = "True"
