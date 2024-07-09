@@ -1,3 +1,40 @@
+release_notes_template = <<-EOT
+        Here are the package and workitem notes
+        #{each package in Octopus.Release.Package}
+        - #{package.PackageId} #{package.Version}
+        #{each workItem in package.WorkItems}
+            - [#{workItem.Id}](#{workItem.LinkUrl}) - #{workItem.Description}
+        #{/each}
+        #{/each}
+        
+        #{each workItem in Octopus.Release.WorkItems}
+        - [#{workItem.Id}](#{workItem.LinkUrl}) - #{workItem.Description}
+        #{/each}
+        
+        Here are the package and commit notes
+        #{each package in Octopus.Release.Package}
+        - #{package.PackageId} #{package.Version}
+        #{each commit in package.Commits}
+            - [#{commit.CommitId}](#{commit.LinkUrl}) - #{commit.Comment}
+        #{/each}
+        #{/each}
+        
+        A list of each build
+        #{each build in Octopus.Release.Builds}
+        * #{build.Packages}
+        * #{build.BuildUrl}
+        * #{build.Branch}
+        * #{build.BuildEnvironment}
+        * #{build.BuildNumber}
+        * #{build.VcsRoot}
+        * #{build.VcsType}
+        * #{build.VcsCommitNumber}
+        * #{build.VcsCommitUrl}
+        #{/each}
+        
+        #{Octopus.Release.Package[#{Octopus.Release.Builds[0].Packages[0].PackageId}].WorkItems}
+        EOT
+
 connectivity_policy {}
 
 versioning_strategy {
