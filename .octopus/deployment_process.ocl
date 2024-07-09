@@ -16,7 +16,7 @@ step "deploy-azure-octopetshop-web-web-app" {
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
-            Octopus.Action.Package.PackageId = "OctopusSamples.OctoPetShop.Web"
+            Octopus.Action.Package.PackageId = "OctoPetShop.Web"
             Octopus.Action.PowerShell.Edition = "Desktop"
             OctopusUseBundledTooling = "True"
         }
@@ -25,7 +25,7 @@ step "deploy-azure-octopetshop-web-web-app" {
         packages {
             acquisition_location = "Server"
             feed = "octopus-server-built-in"
-            package_id = "OctopusSamples.OctoPetShop.Web"
+            package_id = "OctoPetShop.Web"
             properties = {
                 SelectionMode = "immediate"
             }
