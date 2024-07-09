@@ -1,5 +1,5 @@
 release_notes_template = <<-EOT
-        Here are the package and workitem notes
+        This is the package version number:
         #{each package in Octopus.Release.Package}
         - #{package.PackageId} #{package.Version}
         #{each workItem in package.WorkItems}
@@ -11,25 +11,24 @@ release_notes_template = <<-EOT
         - [#{workItem.Id}](#{workItem.LinkUrl}) - #{workItem.Description}
         #{/each}
         
-        Here are the package and commit notes
+        This is the package version number, commit URL and commit comment:
         #{each package in Octopus.Release.Package}
         - #{package.PackageId} #{package.Version}
         #{each commit in package.Commits}
-            - [#{commit.CommitId}](#{commit.LinkUrl}) - #{commit.Comment}
+            - [#{commit.CommitId}](#{commit.LinkUrl}) - Comment: #{commit.Comment}
         #{/each}
         #{/each}
         
-        A list of each build
+        Full build info:
         #{each build in Octopus.Release.Builds}
-        * #{build.Packages}
-        * #{build.BuildUrl}
-        * #{build.Branch}
-        * #{build.BuildEnvironment}
-        * #{build.BuildNumber}
-        * #{build.VcsRoot}
-        * #{build.VcsType}
-        * #{build.VcsCommitNumber}
-        * #{build.VcsCommitUrl}
+        * Packages: #{build.Packages}
+        * Build URL: [#{build.BuildUrl}](#{build.BuildUrl})
+        * Branch: #{build.Branch}
+        * Build Server: #{build.BuildEnvironment}
+        * Build Number: #{build.BuildNumber}
+        * Octopus Project: #{build.VcsRoot}
+        * Version Control Type: #{build.VcsType}
+        * Commit Number: [#{build.VcsCommitNumber}](#{build.VcsCommitUrl})
         #{/each}
         
         EOT
