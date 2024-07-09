@@ -1,3 +1,7 @@
 variable "Project.App.Service.Plan.Name" {
     value "octopetshop-asp" {}
 }
+
+variable "Project.Azure.Runtime" {
+    value "octopetshop-web" {}
+}
