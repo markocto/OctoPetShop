@@ -13,3 +13,4 @@ ENV ASPNETCORE_ENVIRONMENT="Production"
 RUN ["dotnet", "dev-certs", "https"]
 
 ENTRYPOINT [ "dotnet", "run", "--no-launch-profile" ]
+
