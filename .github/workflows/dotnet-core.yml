@@ -160,3 +160,4 @@ jobs:
           git_commit: ${{ github.event.after || github.event.pull_request.head.sha }}
       outputs: 
        release_number: ${{ steps.create-release.outputs.release_number }}
+
