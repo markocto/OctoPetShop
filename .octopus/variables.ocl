@@ -3,5 +3,5 @@ variable "Project.App.Service.Plan.Name" {
 }
 
 variable "Project.Azure.Runtime" {
-    value "octopetshop-rt" {}
+    value "dotnet:6" {}
 }
