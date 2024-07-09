@@ -62,24 +62,3 @@ step "deploy-octopetshop-database" {
         }
     }
 }
-
-step "run-a-script" {
-    name = "Run a Script"
-    properties = {
-        Octopus.Action.TargetRoles = "OctoPetShop-Web"
-    }
-
-    action {
-        action_type = "Octopus.Script"
-        properties = {
-            Octopus.Action.Script.ScriptBody = <<-EOT
-                $URL = $OctopusParameters["Project.Web.URL"]
-                Write-Highlight "OctoPetShop has been deployed to [$url]($url)"
-                Write-Highlight "Please verify the deployment has completed successfully"
-                EOT
-            Octopus.Action.Script.ScriptSource = "Inline"
-            Octopus.Action.Script.Syntax = "PowerShell"
-        }
-        worker_pool = "windows"
-    }
-}
