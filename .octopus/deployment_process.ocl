@@ -18,7 +18,7 @@ step "deploy-azure-octopetshop-web-web-app" {
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
             Octopus.Action.Package.PackageId = "OctoPetShop.Web"
             Octopus.Action.PowerShell.Edition = "Desktop"
-            OctopusUseBundledTooling = "True"
+            OctopusUseBundledTooling = "False"
         }
         worker_pool = "azure-worker-pool"
 
