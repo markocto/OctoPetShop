@@ -32,7 +32,6 @@ release_notes_template = <<-EOT
         * #{build.VcsCommitUrl}
         #{/each}
         
-        #{Octopus.Release.Package[#{Octopus.Release.Builds[0].Packages[0].PackageId}].WorkItems}
         EOT
 
 connectivity_policy {}
