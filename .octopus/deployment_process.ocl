@@ -20,7 +20,7 @@ step "deploy-azure-octopetshop-web-web-app" {
             Octopus.Action.PowerShell.Edition = "Desktop"
             OctopusUseBundledTooling = "True"
         }
-        worker_pool = "windows"
+        worker_pool = "azure-worker-pool"
 
         packages {
             acquisition_location = "Server"
