@@ -11,7 +11,7 @@ release_notes_template = <<-EOT
         - [#{workItem.Id}](#{workItem.LinkUrl}) - #{workItem.Description}
         #{/each}
         
-        This is the package version number, commit URL and commit comment:
+        This is the package version number, commit URL and any commit comments:
         #{each package in Octopus.Release.Package}
         - #{package.PackageId} #{package.Version}
         #{each commit in package.Commits}
