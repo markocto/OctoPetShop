@@ -8,3 +8,4 @@ namespace OctopusSamples.OctoPetShop
         public string ShoppingCartServiceBaseUrl { get; set; }
     }
 }
+
