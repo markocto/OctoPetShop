@@ -5,3 +5,11 @@ variable "Project.App.Service.Plan.Name" {
 variable "Project.Azure.Runtime" {
     value "dotnet:6" {}
 }
+
+variable "Octopus.Azure.Account" {
+    type = "AzureAccount"
+
+    value "azure-service-principle-account" {
+        description = ""
+    }
+}
