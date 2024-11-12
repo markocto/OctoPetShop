@@ -45,7 +45,7 @@ step "deploy-an-azure-web-app-2" {
             Octopus.Action.Azure.UseChecksum = "False"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
-            Octopus.Action.Package.PackageId = "OctoPetShop.ProductService"
+            Octopus.Action.Package.PackageId = "RandomQuotes.DbUp"
             OctopusUseBundledTooling = "False"
         }
         worker_pool = "hosted-windows"
@@ -53,7 +53,7 @@ step "deploy-an-azure-web-app-2" {
         packages {
             acquisition_location = "Server"
             feed = "octopus-server-built-in"
-            package_id = "OctoPetShop.ProductService"
+            package_id = "RandomQuotes.DbUp"
             properties = {
                 SelectionMode = "immediate"
             }
