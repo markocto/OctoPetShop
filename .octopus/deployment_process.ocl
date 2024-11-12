@@ -32,3 +32,31 @@ step "deploy-azure-octopetshop-web-web-app" {
         }
     }
 }
+
+step "deploy-an-azure-web-app-2" {
+    name = "Deploy an Azure Web App 2"
+    properties = {
+        Octopus.Action.TargetRoles = "Az-Worker-001"
+    }
+
+    action {
+        action_type = "Octopus.AzureWebApp"
+        properties = {
+            Octopus.Action.Azure.UseChecksum = "False"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "OctoPetShop.ProductService"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "hosted-windows"
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "OctoPetShop.ProductService"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
