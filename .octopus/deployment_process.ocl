@@ -1,7 +1,7 @@
 step "deploy-an-azure-web-app-2" {
     name = "Deploy an Azure Web App 2"
     properties = {
-        Octopus.Action.TargetRoles = "Az-Worker-001"
+        Octopus.Action.TargetRoles = "OctoPetShop-Product-Service"
     }
 
     action {
@@ -72,6 +72,7 @@ step "send-an-email-on-success" {
             Octopus.Action.Email.Body = "Success!"
             Octopus.Action.Email.Subject = "Success!"
             Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
@@ -86,6 +87,7 @@ step "send-an-email-on-failure" {
             Octopus.Action.Email.Body = "Failed"
             Octopus.Action.Email.Subject = "Failure"
             Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
