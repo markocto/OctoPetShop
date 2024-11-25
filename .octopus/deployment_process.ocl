@@ -1,5 +1,5 @@
 step "deploy-an-azure-web-app-2" {
-    name = "Deploy an Azure Web App 2"
+    name = "Deploy an Azure Web App Frontend Service"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Product-Service"
     }
