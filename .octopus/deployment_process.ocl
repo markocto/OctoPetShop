@@ -29,7 +29,7 @@ step "deploy-an-azure-web-app-2" {
 }
 
 step "deploy-azure-octopetshop-web-web-app" {
-    name = "Deploy Azure OctoPetShop Web App"
+    name = "Deploy OctoPetShop Azure Web App"
     properties = {
         Octopus.Action.TargetRoles = "OctoPetShop-Web-Dev,OctoPetShop-Web-Production,OctoPetShop-Web-Testing"
     }

@@ -37,6 +37,6 @@ connectivity_policy {}
 
 versioning_strategy {
     donor_package {
-        step = "deploy-azure-octopetshop-web-app"
+        step = "Deploy OctoPetShop Azure Web App"
     }
 }
