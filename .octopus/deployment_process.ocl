@@ -7,7 +7,9 @@ step "deploy-an-azure-web-app-2" {
     action {
         action_type = "Octopus.AzureWebApp"
         properties = {
+            Octopus.Action.AutoRetry.MaximumCount = "0"
             Octopus.Action.Azure.UseChecksum = "False"
+            Octopus.Action.ExecutionTimeout.Minutes = "0"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.PackageId = "OctoFront.FrontendService"
@@ -57,6 +59,33 @@ step "deploy-azure-octopetshop-web-web-app" {
             properties = {
                 SelectionMode = "immediate"
             }
+        }
+    }
+}
+
+step "send-an-email-on-success" {
+    name = "Send an Email on Success"
+
+    action {
+        action_type = "Octopus.Email"
+        properties = {
+            Octopus.Action.Email.Body = "Success!"
+            Octopus.Action.Email.Subject = "Success!"
+            Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
+        }
+    }
+}
+
+step "send-an-email-on-failure" {
+    condition = "Failure"
+    name = "Send an Email on Failure"
+
+    action {
+        action_type = "Octopus.Email"
+        properties = {
+            Octopus.Action.Email.Body = "Failed"
+            Octopus.Action.Email.Subject = "Failure"
+            Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
         }
     }
 }
