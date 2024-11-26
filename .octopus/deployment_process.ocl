@@ -7,7 +7,8 @@ step "deploy-an-azure-web-app-2" {
     action {
         action_type = "Octopus.AzureWebApp"
         properties = {
-            Octopus.Action.AutoRetry.MaximumCount = "0"
+            Octopus.Action.AutoRetry.MaximumCount = "3"
+            Octopus.Action.AutoRetry.MinimumBackoff = "15"
             Octopus.Action.Azure.UseChecksum = "False"
             Octopus.Action.ExecutionTimeout.Minutes = "0"
             Octopus.Action.Package.DownloadOnTentacle = "False"
@@ -60,6 +61,24 @@ step "deploy-azure-octopetshop-web-web-app" {
                 SelectionMode = "immediate"
             }
         }
+    }
+}
+
+step "run-a-script" {
+    name = "Run a Script"
+    properties = {
+        Octopus.Action.TargetRoles = "OctoPetShop-Web"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = "#"
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool_variable = ""
     }
 }
 
