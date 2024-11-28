@@ -63,32 +63,3 @@ step "deploy-azure-octopetshop-web-web-app" {
         }
     }
 }
-
-step "send-an-email-on-success" {
-    name = "Send an Email on Success"
-
-    action {
-        action_type = "Octopus.Email"
-        properties = {
-            Octopus.Action.Email.Body = "Success!"
-            Octopus.Action.Email.Subject = "Success!"
-            Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
-            Octopus.Action.RunOnServer = "false"
-        }
-    }
-}
-
-step "send-an-email-on-failure" {
-    condition = "Failure"
-    name = "Send an Email on Failure"
-
-    action {
-        action_type = "Octopus.Email"
-        properties = {
-            Octopus.Action.Email.Body = "Failed"
-            Octopus.Action.Email.Subject = "Failure"
-            Octopus.Action.Email.To = "mark.lamprecht@octopus.com"
-            Octopus.Action.RunOnServer = "false"
-        }
-    }
-}
