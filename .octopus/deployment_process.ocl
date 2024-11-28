@@ -64,24 +64,6 @@ step "deploy-azure-octopetshop-web-web-app" {
     }
 }
 
-step "run-a-script" {
-    name = "Run a Script"
-    properties = {
-        Octopus.Action.TargetRoles = "OctoPetShop-Web"
-    }
-
-    action {
-        action_type = "Octopus.Script"
-        properties = {
-            Octopus.Action.RunOnServer = "false"
-            Octopus.Action.Script.ScriptBody = "#"
-            Octopus.Action.Script.ScriptSource = "Inline"
-            Octopus.Action.Script.Syntax = "PowerShell"
-        }
-        worker_pool_variable = ""
-    }
-}
-
 step "send-an-email-on-success" {
     name = "Send an Email on Success"
 
