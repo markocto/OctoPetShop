@@ -63,3 +63,22 @@ step "deploy-azure-octopetshop-web-web-app" {
         }
     }
 }
+
+step "microsoft-teams-post-a-message" {
+    name = "Microsoft Teams - Post a message"
+
+    action {
+        properties = {
+            Body = "For more information, please see [deployment details](#{if Octopus.Web.ServerUri}#{Octopus.Web.ServerUri}#{else}#{Octopus.Web.BaseUrl}#{/if}#{Octopus.Web.DeploymentLink})!"
+            HookUrl = "https://adsfgfg.asdf"
+            Octopus.Action.Template.Id = "ActionTemplates-541"
+            Octopus.Action.Template.Version = "24"
+            TeamsPostMessage.RetryCount = "1"
+            TeamsPostMessage.RetryDelay = "100"
+            TeamsPostMessage.RetryPosting = "False"
+            Timeout = "60"
+            Title = "#{Octopus.Project.Name} #{Octopus.Release.Number} deployed to #{Octopus.Environment.Name}#{if Octopus.Deployment.Tenant.Id} for #{Octopus.Deployment.Tenant.Name}#{/if}"
+        }
+        worker_pool = "hosted-windows"
+    }
+}
