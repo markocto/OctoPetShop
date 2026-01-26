@@ -15,5 +15,7 @@ variable "Octopus.Azure.Account" {
 }
 
 variable "Project.Worker.Pool.Name" {
-    value {}
+    type = "WorkerPool"
+
+    value "azure-worker-pool" {}
 }
