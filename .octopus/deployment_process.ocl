@@ -49,7 +49,7 @@ step "deploy-an-azure-web-app-2" {
             Octopus.Action.Package.PackageId = "OctoFront.FrontendService"
             OctopusUseBundledTooling = "False"
         }
-        worker_pool = "hosted-windows"
+        worker_pool = "azure-worker-pool"
 
         packages {
             acquisition_location = "Server"
