@@ -13,3 +13,7 @@ variable "Octopus.Azure.Account" {
         description = ""
     }
 }
+
+variable "Project.Worker.Pool.Name" {
+    value {}
+}
