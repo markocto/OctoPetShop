@@ -23,3 +23,7 @@ variable "Project.Worker.Pool.Name" {
 variable "Octopus.ServiceNow.ChangeRequest.Number" {
     value {}
 }
+
+variable "Project.Notes.Field" {
+    value "This is a test entry..." {}
+}
