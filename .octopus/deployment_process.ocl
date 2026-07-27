@@ -2,6 +2,7 @@ step "microsoft-teams-post-a-message" {
     name = "Microsoft Teams - Post a message"
 
     action {
+        is_disabled = true
         properties = {
             Body = "For more information, please see [deployment details](#{if Octopus.Web.ServerUri}#{Octopus.Web.ServerUri}#{else}#{Octopus.Web.BaseUrl}#{/if}#{Octopus.Web.DeploymentLink})!"
             HookUrl = "https://adsfgfg.asdf"
