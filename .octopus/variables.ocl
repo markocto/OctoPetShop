@@ -27,3 +27,11 @@ variable "Octopus.ServiceNow.ChangeRequest.Number" {
 variable "Project.Notes.Field" {
     value "This is a test entry..." {}
 }
+
+variable "Workers-AM-PROD" {
+    type = "WorkerPool"
+
+    value "workers-aws" {
+        environment = ["production"]
+    }
+}
