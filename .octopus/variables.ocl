@@ -28,10 +28,15 @@ variable "Project.Notes.Field" {
     value "This is a test entry..." {}
 }
 
-variable "Workers-AM-PROD" {
+variable "Workers" {
     type = "WorkerPool"
 
     value "workers-aws" {
         environment = ["production"]
+    }
+
+    value "reef-workers" {
+        description = ""
+        environment = ["test"]
     }
 }
